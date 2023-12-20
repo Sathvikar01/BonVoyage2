@@ -149,6 +149,74 @@ def show_cubbon_park_page():
     canvas.pack(side="left", fill="both", expand=True)
     scrollbar.pack(side="right", fill="y", expand=False)
 
+    # Feedback and Star Rating in Main Window
+feedback_label_main = tk.Label(
+    root,
+    text="Leave your feedback:",
+    font=("Great Vibes", 14),
+    fg="blue",
+    pady=10,
+)
+feedback_label_main.pack()
+
+feedback_entry_main = tk.Entry(root, width=50)
+feedback_entry_main.pack()
+
+star_rating_label_main = tk.Label(
+    root,
+    text="Rate your overall experience:",
+    font=("Great Vibes", 14),
+    fg="blue",
+    pady=10,
+)
+star_rating_label_main.pack()
+
+star_rating_var_main = StringVar()
+star_rating_var_main.set("5")  # Default rating
+
+star_rating_scale_main = tk.Scale(
+    root,
+    from_=1,
+    to=5,
+    orient=tk.HORIZONTAL,
+    variable=star_rating_var_main,
+    length=200,
+    showvalue=False,
+    tickinterval=1,
+    resolution=1
+)
+star_rating_scale_main.pack()
+
+def submit_feedback_main():
+    feedback_text_main = feedback_entry_main.get()
+    star_rating_main = star_rating_var_main.get()
+    # You can process the feedback_text_main and star_rating_main here
+    print(f"User Feedback (Main Window): {feedback_text_main}, Star Rating: {star_rating_main}")
+    # Optionally, you can provide a confirmation message
+    messagebox.showinfo("Feedback Submitted", "Thank you for your feedback and rating!")
+
+submit_button_main = tk.Button(
+    root,
+    text="Submit Feedback",
+    command=submit_feedback_main,
+    font=("Great Vibes", 14),
+    fg="green",
+    pady=10,
+)
+submit_button_main.pack(pady=20)
+
+root.mainloop()
+
+feedback = input("Please provide your feedback: ")
+print("Your feedback:", feedback)
+
+delete_feedback = input("Do you want to delete your feedback? (yes/no): ")
+if delete_feedback.lower() == "yes":
+    feedback = ""
+    print("Feedback deleted.")
+else:
+    print("Feedback not deleted.")
+
 ###Lalbagh Botanical Garden###
 
 def show_lalbagh_page():
@@ -165,7 +233,7 @@ def show_lalbagh_page():
         canvas,
         text="Welcome to Lalbagh Botanical Garden",
         font=("Great vibes", 20),
-        fg="white",
+        fg="purple",
     )
     heading_label.pack(padx=20, pady=20)
 
@@ -373,7 +441,7 @@ def show_wonderla_Amusement_Park_page():
 
     info_label = tk.Label(
         canvas,
-        text="\nWonderLa is one of India’s largest amusement and water theme parks. Located on the outskirts of Bengaluru in Ramanagara district, Wonderla Bangalore is spread across 82 acres and has over 60 thrill-packed rides offering entertainment and fun for all age groups. It also has a resort inside the amusement park – making it the first amusement park in India to have a resort built right inside it.",
+        text="WonderLa is one of India’s largest amusement and water theme parks. Located on the outskirts of Bengaluru in Ramanagara district, Wonderla Bangalore is spread across 82 acres and has over 60 thrill-packed rides offering entertainment and fun for all age groups. It also has a resort inside the amusement park.",
         font=("Great Vibes", 16),
         fg="red",
         wraplength=1000,
@@ -382,8 +450,8 @@ def show_wonderla_Amusement_Park_page():
     info_label.pack(padx=20, pady=20)
 
     additional_info_label = tk.Label(
-        canvas,
-       text="\nWeather : 15.8 - 27.9°C\nLabel : Must Visit\nTags : Dry and Water games\nTimings : Weekdays (Monday to Friday): The park is open from 11:00 AM to 06:00 PM. The water park operates from 12:30 PM to 05:00 PM.\n          Weekends and Holidays: The park is open from 11:00 AM to 07:00 PM. The water park operates from 12:00 PM to 06:00 PM.\nTime Required : 5 - 7 hours\nEntry Fee : Weekdays (Monday to Friday):\nRegular Tickets:\nAdult: Rs.1249/-\nChild: Rs.999/-\nSenior Citizen: Rs.937/-\nAdult (with College ID): Rs.999/-\nFastrack Tickets:\nAdult: Rs.2498/-\nChild: Rs.1998/-\nWeekends and Holidays:\nRegular Tickets:\nAdult: Rs.1499/-\nChild: Rs.1199/-\nSenior Citizen: Rs.1124/-\nAdult (with College ID): Rs.1199/-\nFastrack Tickets:\nAdult: Rs.2998/-\nChild: Rs.2398/-\nPlease note that child ticket rates are applicable for children with a height ranging between 85 to 140 cm. For senior citizen tickets, photo ID with age proof is mandatory. For college students, original college ID needs to be displayed at the gate during check-in.\n",
+    canvas,
+       text="Weather : 15.8 - 27.9°C\nLabel : Must Visit\nTags : Dry and Water games\nTimings : Weekdays (Monday to Friday): The park is open from 11:00 AM to 06:00 PM. The water park operates from 12:30 PM to 05:00 PM.\nWeekends and Holidays: The park is open from 11:00 AM to 07:00 PM. The water park operates from 12:00 PM to 06:00 PM.\nTime Required : 5 - 7 hours\nEntry Fee : Weekdays (Monday to Friday):\nRegular Tickets:\nAdult: Rs.1249/-\nChild: Rs.999/-\nSenior Citizen: Rs.937/-\nAdult (with College ID): Rs.999/-\nWeekends and Holidays:\nRegular Tickets:\nAdult: Rs.1499/-\nChild: Rs.1199/-\nSenior Citizen: Rs.1124/-\nAdult (with College ID): Rs.1199/-\n",
         font=("Great Vibes", 12),
         fg="DARK GREEN",
         wraplength=500,
@@ -403,7 +471,7 @@ def show_wonderla_Amusement_Park_page():
 
     additional_info_label = tk.Label(
         canvas,
-        text="""LOCATION :\nWonderla Amusement Park in Bangalore is located on Mysore Road, 28 km from Bengaluru city. The exact address is 28th km, Mysore Road, Before Bidadi, Bengaluru, Karnataka, 562109, India.""",
+        text="""LOCATION :Wonderla Amusement Park in Bangalore is located on Mysore Road, 28 km from Bengaluru city. The exact address is 28th km, Mysore Road, Before Bidadi, Bengaluru, Karnataka, 562109, India.""",
         font=("Great Vibes", 10),
         fg="maroon",
         wraplength=800,
@@ -671,7 +739,7 @@ def show_Jawaharlal_Nehru_Planetarium_page():
 
     info_label = tk.Label(
         canvas,
-        text="\nJawaharlal Nehru Planetarium in Bangalore is a popular attraction in the city that is administered by the Bangalore Association for Science Education (BASE). The entire establishment is meant for science enthusiasts with an aim to impart knowledge of the aspects of earth and space in a fun and exciting way.People1,especially kids,from around the city visit this place as well as tourists who visit banglore",
+        text="Jawaharlal Nehru Planetarium in Bangalore is a popular attraction in the city that is administered by the Bangalore Association for Science Education (BASE). The entire establishment is meant for science enthusiasts with an aim to impart knowledge of the aspects of earth and space in a fun and exciting way.People1,especially kids,from around the city visit this place as well as tourists who visit banglore",
         font=("Great Vibes", 16),
         fg="red",
         wraplength=1000,
@@ -681,7 +749,7 @@ def show_Jawaharlal_Nehru_Planetarium_page():
 
     additional_info_label = tk.Label(
         canvas,
-        text="\n\n\n\n\n\n\\n\n\n\n\n\n\n\n\n\nWeather : 20 - 27°C\nLabel : Fun for kids\nTags : pianetarium\nTimings : 10:00 AM - 5:30 PM (closed on Mondays, second Tuesdays, local and national holidays)\nTime Required : 2-3 hrs\nEntry Fee:adults:INR 60 School students/children(up to 16 years):INR 35", 
+        text="Weather : 20 - 27°C\nLabel : Fun for kids\nTags : pianetarium\nTimings : 10:00 AM - 5:30 PM (closed on Mondays, second Tuesdays, local and national holidays)\nTime Required : 2-3 hrs\nEntry Fee:adults:INR 60 School students/children(up to 16 years):INR 35", 
         font=("Great Vibes", 12),
         fg="DARK GREEN",
         wraplength=500,
@@ -713,7 +781,7 @@ def show_Jawaharlal_Nehru_Planetarium_page():
         r"images\Bannerghatta-NationalPark-4.jpg",
         r"images\bannerghattanationalpark3.jpg",
         r"images\BG1.jpg"
-    ]
+    ]   
 
     # Display images one after the other
     current_image_index = 0
@@ -768,7 +836,7 @@ def show_Hal_Aerospace_Museum_page():
 
     info_label = tk.Label(
         canvas,
-        text="\nHAL Aerospace Museum is one of the major public attractions of Bangalore. Inaugurated in 2001 at the Hindustan Aeronautics Limited premises, the museum was established with an objective of educating the public about everything the journey of HAL, one of Asia's largest and most important aeronautical companies, had to offer - be it historical, scientific or academic",
+        text="HAL Aerospace Museum is one of the major public attractions of Bangalore. Inaugurated in 2001 at the Hindustan Aeronautics Limited premises, the museum was established with an objective of educating the public about everything the journey of HAL, one of Asia's largest and most important aeronautical companies, had to offer - be it historical, scientific or academic",
         font=("Great Vibes", 16),
         fg="red",
         wraplength=1000,
@@ -1044,7 +1112,7 @@ def show_Banglore_Palace_page():
 
 root = tk.Tk()
 root.title("BON VOYAGE")
-root.geometry("600x400")
+root.geometry("1290x1080")
 
 background_image = PhotoImage(file=r"images\bonvoyage.png")  # Replace with your image file
 
@@ -1054,7 +1122,7 @@ background_label.place(relwidth=1, relheight=1)
 
 heading_label = tk.Label(
     root,
-    text="Welcome to Our Website - Bon Voyage to an Exciting Journey",
+    text="Welcome to Our Travel Guide - Bon Voyage to an Exciting Journey",
     font=("Great Vibes", 32),
     fg="black",
     bg="white"
@@ -1070,5 +1138,6 @@ destination_combobox.pack(pady=20)
 
 select_button = tk.Button(root, text="EXPLORE", command=on_select_destination)
 select_button.pack(pady=20)
+
 
 root.mainloop()
