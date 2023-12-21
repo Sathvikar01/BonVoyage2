@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk, PhotoImage, Toplevel, Canvas, Scrollbar
+from tkinter import ttk, PhotoImage, Toplevel, Canvas, Scrollbar, messagebox
 from PIL import Image, ImageTk
 
 # Options for the destination dropdown
@@ -149,73 +149,77 @@ def show_cubbon_park_page():
     canvas.pack(side="left", fill="both", expand=True)
     scrollbar.pack(side="right", fill="y", expand=False)
 
-    # Feedback and Star Rating in Main Window
-feedback_label_main = tk.Label(
-    root,
-    text="Leave your feedback:",
-    font=("Great Vibes", 14),
-    fg="blue",
-    pady=10,
-)
-feedback_label_main.pack()
+    def on_exit_cubbon_park():
+        feedback_window = Toplevel(cubbon_park_window)
+        feedback_window.title("Feedback and Rating")
 
-feedback_entry_main = tk.Entry(root, width=50)
-feedback_entry_main.pack()
+        feedback_label = tk.Label(
+            feedback_window,
+            text="Leave your feedback:",
+            font=("Great Vibes", 14),
+            fg="blue",
+            pady=10,
+        )
+        feedback_label.pack()
 
-star_rating_label_main = tk.Label(
-    root,
-    text="Rate your overall experience:",
-    font=("Great Vibes", 14),
-    fg="blue",
-    pady=10,
-)
-star_rating_label_main.pack()
+        feedback_entry = tk.Entry(feedback_window, width=50)
+        feedback_entry.pack()
 
-star_rating_var_main = StringVar()
-star_rating_var_main.set("5")  # Default rating
+        star_rating_label = tk.Label(
+            feedback_window,
+            text="Rate your experience at Cubbon Park:",
+            font=("Great Vibes", 14),
+            fg="blue",
+            pady=10,
+        )
+        star_rating_label.pack()
 
-star_rating_scale_main = tk.Scale(
-    root,
-    from_=1,
-    to=5,
-    orient=tk.HORIZONTAL,
-    variable=star_rating_var_main,
-    length=200,
-    showvalue=False,
-    tickinterval=1,
-    resolution=1
-)
-star_rating_scale_main.pack()
+        star_rating_var = tk.StringVar()
+        star_rating_var.set("5")  # Default rating
 
-def submit_feedback_main():
-    feedback_text_main = feedback_entry_main.get()
-    star_rating_main = star_rating_var_main.get()
-    # You can process the feedback_text_main and star_rating_main here
-    print(f"User Feedback (Main Window): {feedback_text_main}, Star Rating: {star_rating_main}")
-    # Optionally, you can provide a confirmation message
-    messagebox.showinfo("Feedback Submitted", "Thank you for your feedback and rating!")
+        star_rating_scale = tk.Scale(
+            feedback_window,
+            from_=1,
+            to=5,
+            orient=tk.HORIZONTAL,
+            variable=star_rating_var,
+            length=200,
+            showvalue=False,
+            tickinterval=1,
+            resolution=1
+        )
+        star_rating_scale.pack()
 
-submit_button_main = tk.Button(
-    root,
-    text="Submit Feedback",
-    command=submit_feedback_main,
-    font=("Great Vibes", 14),
-    fg="green",
-    pady=10,
-)
-submit_button_main.pack(pady=20)
+        def submit_feedback():
+            feedback_text = feedback_entry.get()
+            star_rating = star_rating_var.get()
+            # You can process the feedback_text and star_rating here
+            print(f"User Feedback: {feedback_text}, Star Rating: {star_rating}")
+            # Optionally, you can provide a confirmation message
+            messagebox.showinfo("Feedback Submitted", "Thank you for your feedback and rating!")
+            feedback_window.destroy()  # Close the feedback window after submission
+            cubbon_park_window.destroy()  # Close the main window after submission
 
-root.mainloop()
+        submit_button = tk.Button(
+            feedback_window,
+            text="Submit Feedback",
+            command=submit_feedback,
+            font=("Great Vibes", 14),
+            fg="green",
+            pady=10,
+        )
+        submit_button.pack(pady=20)
 
-feedback = input("Please provide your feedback: ")
-print("Your feedback:", feedback)
+    exit_button_cubbon = tk.Button(
+        cubbon_park_window,
+        text="Exit",
+        command=on_exit_cubbon_park,
+        font=("Great Vibes", 14),
+        fg="red",
+        pady=10,
+    )
+    exit_button_cubbon.pack(pady=20)
 
-delete_feedback = input("Do you want to delete your feedback? (yes/no): ")
-if delete_feedback.lower() == "yes":
-    feedback = ""
-    print("Feedback deleted.")
-else:
-    print("Feedback not deleted.")
 
 ###Lalbagh Botanical Garden###
 
@@ -318,6 +322,79 @@ def show_lalbagh_page():
     canvas.pack(side="left", fill="both", expand=True)
     scrollbar.pack(side="right", fill="y", expand=False)
 
+    def on_exit_lalbagh():
+        feedback_window = Toplevel(lalbagh_window)
+        feedback_window.title("Feedback and Rating")
+
+        feedback_label = tk.Label(
+            feedback_window,
+            text="Leave your feedback:",
+            font=("Great Vibes", 14),
+            fg="blue",
+            pady=10,
+        )
+        feedback_label.pack()
+
+        feedback_entry = tk.Entry(feedback_window, width=50)
+        feedback_entry.pack()
+
+        star_rating_label = tk.Label(
+            feedback_window,
+            text="Rate your experience at Lalbagh:",
+            font=("Great Vibes", 14),
+            fg="blue",
+            pady=10,
+        )
+        star_rating_label.pack()
+
+        star_rating_var = tk.StringVar()
+        star_rating_var.set("5")  # Default rating
+
+        star_rating_scale = tk.Scale(
+            feedback_window,
+            from_=1,
+            to=5,
+            orient=tk.HORIZONTAL,
+            variable=star_rating_var,
+            length=200,
+            showvalue=False,
+            tickinterval=1,
+            resolution=1
+        )
+        star_rating_scale.pack()
+
+        def submit_feedback():
+            feedback_text = feedback_entry.get()
+            star_rating = star_rating_var.get()
+            # You can process the feedback_text and star_rating here
+            print(f"User Feedback: {feedback_text}, Star Rating: {star_rating}")
+            # Optionally, you can provide a confirmation message
+            messagebox.showinfo("Feedback Submitted", "Thank you for your feedback and rating!")
+            feedback_window.destroy()  # Close the feedback window after submission
+            lalbagh_window.destroy()  # Close the main window after submission
+
+        submit_button = tk.Button(
+            feedback_window,
+            text="Submit Feedback",
+            command=submit_feedback,
+            font=("Great Vibes", 14),
+            fg="green",
+            pady=10,
+        )
+        submit_button.pack(pady=20)
+
+    exit_button_lalbagh = tk.Button(
+        lalbagh_window,
+        text="Exit",
+        command=on_exit_lalbagh,
+        font=("Great Vibes", 14),
+        fg="red",
+        pady=10,
+    )
+    exit_button_lalbagh.pack(pady=20)
+
+
+
 ###Vidhana Soudha###
 
 def show_vidhana_soudha_page():
@@ -417,6 +494,77 @@ def show_vidhana_soudha_page():
     # Pack the Canvas and Scrollbar
     canvas.pack(side="left", fill="both", expand=True)
     scrollbar.pack(side="right", fill="y", expand=False)
+
+    def on_exit_vidhana_soudha():
+        feedback_window = Toplevel(vidhana_soudha_window)
+        feedback_window.title("Feedback and Rating")
+
+        feedback_label = tk.Label(
+            feedback_window,
+            text="Leave your feedback:",
+            font=("Great Vibes", 14),
+            fg="blue",
+            pady=10,
+        )
+        feedback_label.pack()
+
+        feedback_entry = tk.Entry(feedback_window, width=50)
+        feedback_entry.pack()
+
+        star_rating_label = tk.Label(
+            feedback_window,
+            text="Rate your experience at Vidhana Soudha:",
+            font=("Great Vibes", 14),
+            fg="blue",
+            pady=10,
+        )
+        star_rating_label.pack()
+
+        star_rating_var = tk.StringVar()
+        star_rating_var.set("5")  # Default rating
+
+        star_rating_scale = tk.Scale(
+            feedback_window,
+            from_=1,
+            to=5,
+            orient=tk.HORIZONTAL,
+            variable=star_rating_var,
+            length=200,
+            showvalue=False,
+            tickinterval=1,
+            resolution=1
+        )
+        star_rating_scale.pack()
+
+        def submit_feedback():
+            feedback_text = feedback_entry.get()
+            star_rating = star_rating_var.get()
+            # You can process the feedback_text and star_rating here
+            print(f"User Feedback: {feedback_text}, Star Rating: {star_rating}")
+            # Optionally, you can provide a confirmation message
+            messagebox.showinfo("Feedback Submitted", "Thank you for your feedback and rating!")
+            feedback_window.destroy()  # Close the feedback window after submission
+            vidhana_soudha_window.destroy()  # Close the main window after submission
+
+        submit_button = tk.Button(
+            feedback_window,
+            text="Submit Feedback",
+            command=submit_feedback,
+            font=("Great Vibes", 14),
+            fg="green",
+            pady=10,
+        )
+        submit_button.pack(pady=20)
+
+    exit_button_vidhana_soudha = tk.Button(
+        vidhana_soudha_window,
+        text="Exit",
+        command=on_exit_vidhana_soudha,
+        font=("Great Vibes", 14),
+        fg="red",
+        pady=10,
+    )
+    exit_button_vidhana_soudha.pack(pady=20)
 
 ###Wonderla Amusement Park###
 
@@ -617,6 +765,77 @@ def show_iskcon_page():
     canvas.pack(side="left", fill="both", expand=True)
     scrollbar.pack(side="right", fill="y", expand=False)
 
+    def on_exit_iskcon():
+        feedback_window = Toplevel(iskcon_window)
+        feedback_window.title("Feedback and Rating")
+
+        feedback_label = tk.Label(
+            feedback_window,
+            text="Leave your feedback:",
+            font=("Great Vibes", 14),
+            fg="blue",
+            pady=10,
+        )
+        feedback_label.pack()
+
+        feedback_entry = tk.Entry(feedback_window, width=50)
+        feedback_entry.pack()
+
+        star_rating_label = tk.Label(
+            feedback_window,
+            text="Rate your experience at Iskcon Temple:",
+            font=("Great Vibes", 14),
+            fg="blue",
+            pady=10,
+        )
+        star_rating_label.pack()
+
+        star_rating_var = tk.StringVar()
+        star_rating_var.set("5")  # Default rating
+
+        star_rating_scale = tk.Scale(
+            feedback_window,
+            from_=1,
+            to=5,
+            orient=tk.HORIZONTAL,
+            variable=star_rating_var,
+            length=200,
+            showvalue=False,
+            tickinterval=1,
+            resolution=1
+        )
+        star_rating_scale.pack()
+
+        def submit_feedback():
+            feedback_text = feedback_entry.get()
+            star_rating = star_rating_var.get()
+            # You can process the feedback_text and star_rating here
+            print(f"User Feedback: {feedback_text}, Star Rating: {star_rating}")
+            # Optionally, you can provide a confirmation message
+            messagebox.showinfo("Feedback Submitted", "Thank you for your feedback and rating!")
+            feedback_window.destroy()  # Close the feedback window after submission
+            iskcon_window.destroy()  # Close the main window after submission
+
+        submit_button = tk.Button(
+            feedback_window,
+            text="Submit Feedback",
+            command=submit_feedback,
+            font=("Great Vibes", 14),
+            fg="green",
+            pady=10,
+        )
+        submit_button.pack(pady=20)
+
+    exit_button_iskcon = tk.Button(
+        iskcon_window,
+        text="Exit",
+        command=on_exit_iskcon,
+        font=("Great Vibes", 14),
+        fg="red",
+        pady=10,
+    )
+    exit_button_iskcon.pack(pady=20)
+
 ##Bannerghatta Zoo###
 
 def show_bannerghatta_zoo_page():
@@ -715,6 +934,78 @@ def show_bannerghatta_zoo_page():
     # Pack the Canvas and Scrollbar
     canvas.pack(side="left", fill="both", expand=True)
     scrollbar.pack(side="right", fill="y", expand=False)
+
+    def on_exit_bannerghatta_zoo():
+        feedback_window = Toplevel(bannerghatta_zoo_window)
+        feedback_window.title("Feedback and Rating")
+
+        feedback_label = tk.Label(
+            feedback_window,
+            text="Leave your feedback:",
+            font=("Great Vibes", 14),
+            fg="blue",
+            pady=10,
+        )
+        feedback_label.pack()
+
+        feedback_entry = tk.Entry(feedback_window, width=50)
+        feedback_entry.pack()
+
+        star_rating_label = tk.Label(
+            feedback_window,
+            text="Rate your experience at Bannerghatta Zoo:",
+            font=("Great Vibes", 14),
+            fg="blue",
+            pady=10,
+        )
+        star_rating_label.pack()
+
+        star_rating_var = tk.StringVar()
+        star_rating_var.set("5")  # Default rating
+
+        star_rating_scale = tk.Scale(
+            feedback_window,
+            from_=1,
+            to=5,
+            orient=tk.HORIZONTAL,
+            variable=star_rating_var,
+            length=200,
+            showvalue=False,
+            tickinterval=1,
+            resolution=1
+        )
+        star_rating_scale.pack()
+
+        def submit_feedback():
+            feedback_text = feedback_entry.get()
+            star_rating = star_rating_var.get()
+            # You can process the feedback_text and star_rating here
+            print(f"User Feedback: {feedback_text}, Star Rating: {star_rating}")
+            # Optionally, you can provide a confirmation message
+            messagebox.showinfo("Feedback Submitted", "Thank you for your feedback and rating!")
+            feedback_window.destroy()  # Close the feedback window after submission
+            bannerghatta_zoo_window.destroy()  # Close the main window after submission
+
+        submit_button = tk.Button(
+            feedback_window,
+            text="Submit Feedback",
+            command=submit_feedback,
+            font=("Great Vibes", 14),
+            fg="green",
+            pady=10,
+        )
+        submit_button.pack(pady=20)
+
+    exit_button_bannerghatta_zoo = tk.Button(
+        bannerghatta_zoo_window,
+        text="Exit",
+        command=on_exit_bannerghatta_zoo,
+        font=("Great Vibes", 14),
+        fg="red",
+        pady=10,
+    )
+    exit_button_bannerghatta_zoo.pack(pady=20)
+
 
 ##Jawaharlal_Nehru_Planetarium###
 
