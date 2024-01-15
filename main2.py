@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk, PhotoImage, Toplevel, Canvas, Scrollbar, messagebox
+from tkinter import ttk, PhotoImage, Toplevel, Canvas, Scrollbar, messagebox 
 from PIL import Image, ImageTk
 
 # Options for the destination dropdown
@@ -459,10 +459,10 @@ def show_vidhana_soudha_page():
 
     # Example: Display multiple images
     image_paths = [
-        r"images\Bengaluru’s-Vidhana-Soudha-1.jpg",
-        r"images\VS 2.jpg",
-        r"images\vidhana soudha 5.jpg",
-        r"images\vidhana soudha 3.jpg"
+        r"images\jawaharlal-nehru -planetarium 2.jpg",
+        r"images\jawaharlal-nehru-planetarium 4.jpg",
+        r"images\jawaharlal-nehru-planetarium-bangalore-1_.jpg",
+        r"images\Jawaharlal-Nehru-Planetarium-Bengaluru3.jpg"
     ]
 
     # Display images one after the other
@@ -1167,10 +1167,11 @@ def show_Hal_Aerospace_Museum_page():
 
     # Example: Display multiple images
     image_paths = [
-        r"images\bannerghatta 2.jpg",
-        r"images\Bannerghatta-NationalPark-4.jpg",
-        r"images\bannerghattanationalpark3.jpg",
-        r"images\BG1.jpg"
+        r"images\HAL 4.jpg",
+        r"images\HAL_1.jpg",
+        r"images\HAL_5.jpg",
+        r"images\hal2.jpg",
+        r"images\hal3.jpg"
     ]
 
     # Display images one after the other
@@ -1363,10 +1364,9 @@ def show_Banglore_Palace_page():
 
     # Example: Display multiple images
     image_paths = [
-        r"images\bannerghatta 2.jpg",
-        r"images\Bannerghatta-NationalPark-4.jpg",
-        r"images\bannerghattanationalpark3.jpg",
-        r"images\BG1.jpg"
+        r"images\BP 3.jpg",
+        r"images\BP 4.jpg",
+        r"images\BP 5.jpg",
     ]
 
     # Display images one after the other
